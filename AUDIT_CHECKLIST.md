@@ -1,7 +1,5 @@
 # AUDIT CHECKLIST
 
-## Quality Gate Audit
-
 | **STT** | **Hạng mục Quality Gate** | **Tiêu chuẩn (DoD)** | **Bằng chứng** | **Trạng thái** |
 |:---:|---|---|---|:---:|
 | 1 | Red-Zone Security | Có lá chắn chặn AI đọc file cấu hình nhạy cảm; 0% rò rỉ Secrets/YML. | `.gitignore`: loại trừ `application*.yml`, `application*.yaml`, `application*.properties`, `.env`, khóa và thư mục `secrets/`. | [x] PASSED |
@@ -13,26 +11,3 @@
 | 7 | Prompt Evidence | Có `Dev_Prompt_Library.md` kèm Prompt được cấu trúc theo 5 thành tố. | `Dev_Prompt_Library.md`: lưu trữ các Prompt sử dụng trong quá trình phát triển phần mềm. | [x] PASSED |
 
 ---
-
-## Audit Summary
-
-| **Chỉ số** | **Kết quả** |
-|---|:---:|
-| Tổng số Quality Gate | 7 |
-| Số hạng mục PASSED | 7 |
-| Số hạng mục FAILED | 0 |
-| Tỷ lệ hoàn thành | 100% |
-
-**Audit Result:** PASSED
-
----
-
-## Audit Notes
-
-- Red-Zone Security: `.gitignore` giúp ngăn Git theo dõi các file cấu hình nhạy cảm, không tự động ngăn AI đọc các file này.
-- Clean Architecture: Controller chỉ giao tiếp thông qua DTO, không trả trực tiếp JPA Entity.
-- PII Masking: Dữ liệu CCCD và số điện thoại được che mờ trước khi trả về Client; dữ liệu gốc vẫn được lưu trong Database.
-- Exception Handling: Không trả về SQL Stacktrace hoặc thông tin nội bộ trong HTTP Response.
-- Prompt Evidence: Cần đảm bảo `Dev_Prompt_Library.md` tồn tại và có đầy đủ nội dung Prompt theo 5 thành tố.
-
-**Lưu ý:** Trạng thái PASSED cần được xác nhận bằng mã nguồn, cấu hình và kết quả kiểm thử thực tế.
